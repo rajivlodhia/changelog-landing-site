@@ -64,9 +64,7 @@ export const ProductDescription = styled.p`
 
 export const FormContainer = styled.form`
     width: 100%;
-    @media screen and (max-width: 600px) {
-        margin-top: 40px;
-    }
+    margin: 40px 0 20px 0;
 `;
 
 export const FormRow = styled.div`
