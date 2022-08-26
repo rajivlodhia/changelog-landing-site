@@ -12,7 +12,6 @@ import {
     ProductDescription,
     HeaderContainer,
 } from "./index.elements";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 interface Props {}
 const url = "https://chxngelog.us14.list-manage.com/subscribe/post";
