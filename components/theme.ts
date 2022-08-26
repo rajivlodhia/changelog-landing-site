@@ -73,7 +73,7 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
     z-index: 1;
     width: 100%;
-    height: 65%;
+    height: 80%;
     display: flex;
     flex-direction: ${({ flexDirection }) =>
         flexDirection ? flexDirection : "column"};

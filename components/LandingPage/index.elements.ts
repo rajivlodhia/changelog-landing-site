@@ -56,7 +56,7 @@ export const SubText = styled.p`
 export const ProductDescription = styled.p`
     font-size: 1.3rem;
     text-align: center;
-    margin: 50px auto 0;
+    margin: 25px auto 0;
     @media screen and (min-width: 600px) {
         width: 60%;
     }

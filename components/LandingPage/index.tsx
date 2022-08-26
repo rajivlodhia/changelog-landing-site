@@ -68,7 +68,11 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     and you want to share the changelog with your users. You'll
                     want the changelog on your website, you might want to send
                     an email out about the update and maybe you'll want the
-                    changelog to show change
+                    changelog to show on your software itself. In this case, you
+                    could use chxngelog.com to avoid having three separately
+                    written changelogs. That would also give you the power to
+                    make adjustments to your changelog that would impact all
+                    three locations.
                 </ProductDescription>
             </Container>
         </Section>
