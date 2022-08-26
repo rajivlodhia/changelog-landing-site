@@ -29,44 +29,19 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                         All your changelogs managed from one place
                     </SubText>
                 </HeaderContainer>
-                <MailchimpSubscribe
-                    url={url}
-                    render={({ subscribe, status, message }) => (
-                        <div>
-                            <form onSubmit={(formData) => subscribe(formData)}>
-                                <FormRow>
-                                    <FormLabel>Sign-up for updates</FormLabel>
-                                    <FormRowItem>
-                                        <EmailField
-                                            type="email"
-                                            placeholder="email@provider.com"
-                                        />
-                                        <SubmitButton
-                                            type="submit"
-                                            value="Sign-up"
-                                        />
-                                    </FormRowItem>
-                                </FormRow>
-                            </form>
-                            {status === "sending" && (
-                                <div style={{ color: "blue" }}>sending...</div>
-                            )}
-                            {status === "error" && (
-                                <div
-                                    style={{ color: "red" }}
-                                    dangerouslySetInnerHTML={{
-                                        __html: message,
-                                    }}
-                                />
-                            )}
-                            {status === "success" && (
-                                <div style={{ color: "green" }}>
-                                    Subscribed !
-                                </div>
-                            )}
-                        </div>
-                    )}
-                />
+
+                <form>
+                    <FormRow>
+                        <FormLabel>Sign-up for updates</FormLabel>
+                        <FormRowItem>
+                            <EmailField
+                                type="email"
+                                placeholder="email@provider.com"
+                            />
+                            <SubmitButton type="submit" value="Sign-up" />
+                        </FormRowItem>
+                    </FormRow>
+                </form>
 
                 <ProductDescription>
                     Lorem Ipsum is simply dummy text of the printing and
