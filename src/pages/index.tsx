@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Changelog hosting api | Chxngelog</title>
+        <title>Better Changelog Management | chxngelog</title>
         <meta name="description" content="Changelogs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
