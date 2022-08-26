@@ -53,7 +53,7 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     </FormRow>
                 </FormContainer>
 
-                <h2>Never write your changelog more than once</h2>
+                {/* <h2>Never write your changelog more than once</h2> */}
                 <ProductDescription>
                     It's common for a company to show off a changelog in more
                     than one place to as many people as possible. The problem is
