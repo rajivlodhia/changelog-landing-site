@@ -30,7 +30,11 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     </SubText>
                 </HeaderContainer>
 
-                <FormContainer>
+                <FormContainer
+                    action="https://elielrom.us2.list-manage.com/subscribe/post"
+                    method="POST"
+                    noValidate
+                >
                     <FormRow>
                         <FormLabel>Sign-up for updates</FormLabel>
                         <input
@@ -49,14 +53,22 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     </FormRow>
                 </FormContainer>
 
+                <h2>Never write your changelog more than once</h2>
                 <ProductDescription>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
+                    It's common for a company to show off a changelog in more
+                    than one place to as many people as possible. The problem is
+                    that you'd need to work to create the consistency between
+                    changelogs. This is a new a new software that allows you to
+                    create, manage and host your projects' changelogs all in one
+                    place. Create your changelog here and use it whereever you
+                    need it.
+                </ProductDescription>
+                <ProductDescription>
+                    Let's say you're releasing a new version of your software
+                    and you want to share the changelog with your users. You'll
+                    want the changelog on your website, you might want to send
+                    an email out about the update and maybe you'll want the
+                    changelog to show change
                 </ProductDescription>
             </Container>
         </Section>
