@@ -73,7 +73,7 @@ export const FormRow = styled.div`
     justify-content: center;
     align-items: center;
     background-color: hsl(211, 67%, 21%);
-    padding: 60px 0;
+    padding: 60px 0 70px;
 `;
 export const FormRowItem = styled.div`
     display: flex;
