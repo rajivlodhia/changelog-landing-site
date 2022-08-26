@@ -11,6 +11,7 @@ import {
     FormLabel,
     ProductDescription,
     HeaderContainer,
+    FormContainer,
 } from "./index.elements";
 
 interface Props {}
@@ -29,9 +30,15 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     </SubText>
                 </HeaderContainer>
 
-                <form>
+                <FormContainer>
                     <FormRow>
                         <FormLabel>Sign-up for updates</FormLabel>
+                        <input
+                            type="hidden"
+                            name="u"
+                            value="0f75b3711d3dfb5f9699d8e6b"
+                        />
+                        <input type="hidden" name="id" value="afca93fc51" />
                         <FormRowItem>
                             <EmailField
                                 type="email"
@@ -40,7 +47,7 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                             <SubmitButton type="submit" value="Sign-up" />
                         </FormRowItem>
                     </FormRow>
-                </form>
+                </FormContainer>
 
                 <ProductDescription>
                     Lorem Ipsum is simply dummy text of the printing and

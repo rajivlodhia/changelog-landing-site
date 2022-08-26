@@ -10,6 +10,9 @@ export const Section = styled.section`
     justify-content: center;
     align-items: center;
     letter-spacing: 0.7px;
+    @media screen and (max-width: 600px) {
+        padding: 0 10px;
+    }
 `;
 
 export const HeaderContainer = styled.div`
@@ -36,6 +39,9 @@ export const MainHeading = styled.h1`
         top: 53%;
         z-index: -1;
         border-top: 7px solid #fbd73d;
+        @media screen and (max-width: 600px) {
+            border-width: 3px;
+        }
     }
     @media screen and (min-width: 600px) {
         font-size: 8rem;
@@ -56,6 +62,13 @@ export const ProductDescription = styled.p`
     }
 `;
 
+export const FormContainer = styled.form`
+    width: 100%;
+    @media screen and (max-width: 600px) {
+        margin-top: 40px;
+    }
+`;
+
 export const FormRow = styled.div`
     display: flex;
     flex-direction: column;
@@ -63,10 +76,6 @@ export const FormRow = styled.div`
     align-items: center;
     background-color: hsl(211, 67%, 21%);
     padding: 60px 0;
-    @media screen and (max-width: 600px) {
-        width: 100%;
-        margin: 3rem;
-    }
 `;
 export const FormRowItem = styled.div`
     display: flex;
@@ -74,6 +83,7 @@ export const FormRowItem = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 80%;
     }
 `;
 

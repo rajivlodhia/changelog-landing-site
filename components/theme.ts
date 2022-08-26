@@ -73,7 +73,6 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
     z-index: 1;
     width: 100%;
-    max-width: var(--container-max-width);
     height: 65%;
     display: flex;
     flex-direction: ${({ flexDirection }) =>
@@ -83,12 +82,6 @@ export const Container = styled.div<ContainerProps>`
         justifyContent ? justifyContent : "center"};
     margin-left: auto;
     margin-right: auto;
-    @media screen and (max-width: 991px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        justify-content: center;
-        align-items: center;
-    }
 `;
 
 export const Section = styled.section`
@@ -99,12 +92,7 @@ export const Section = styled.section`
 `;
 
 export const Form = styled.form`
-    width: 80%;
-    color: black;
-    font-weight: 600;
-    @media screen and (max-width: 1100px) {
-        width: 100%;
-    }
+    width: 100%;
 `;
 export const FormRow = styled.div`
     display: flex;
