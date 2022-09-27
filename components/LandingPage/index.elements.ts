@@ -65,6 +65,12 @@ export const ProductDescription = styled.p`
 export const FormContainer = styled.form`
     width: 100%;
     margin: 40px 0 20px 0;
+    background-color: hsl(211, 67%, 21%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
 `;
 
 export const FormRow = styled.div`
@@ -72,8 +78,7 @@ export const FormRow = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: hsl(211, 67%, 21%);
-    padding: 60px 0 70px;
+    padding: 0.5rem;
 `;
 export const FormRowItem = styled.div`
     display: flex;

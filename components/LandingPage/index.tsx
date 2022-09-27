@@ -1,5 +1,25 @@
 import type { NextComponentType, NextPageContext } from "next";
-import { Container, Form, Label, SubmitRow, TextInput } from "../theme";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+import {
+    Container,
+    Form,
+    Label,
+    SubmitRow,
+    TextInput,
+    ValidationError,
+} from "../theme";
+
+import {
+    useForm,
+    SubmitHandler,
+    useFieldArray,
+    Controller,
+} from "react-hook-form";
+
 import {
     EmailField,
     FormRow,
@@ -15,8 +35,76 @@ import {
 } from "./index.elements";
 
 interface Props {}
-const url = "https://chxngelog.us14.list-manage.com/subscribe/post";
+
+interface IFormInputs {
+    email: string;
+}
+
+const schema = z.object({
+    email: z.string().email({ message: "Please enter a valid email address." }),
+});
+
 const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
+    const [formStep, setFormStep] = useState(0);
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+    const {
+        register,
+        handleSubmit,
+        control,
+        watch,
+        reset,
+        formState: { errors },
+    } = useForm<IFormInputs>({
+        resolver: zodResolver(schema),
+    });
+
+    const formSubmitHandler: SubmitHandler<IFormInputs> = async (data) => {
+        console.log("Submitted Data: ", data);
+        setFormStep(1);
+        const token = await recaptchaRef.current?.getValue();
+        const templateParams = {
+            email: data.email,
+            "g-recaptcha-response": token,
+        };
+        const adminEmail = await emailjs
+            .send(
+                "service_0kops2r",
+                "template_blx6rdb",
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_KEY
+            )
+            .then(
+                function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    setFormStep(2);
+                },
+                function (error) {
+                    console.log("FAILED...", error);
+                    setFormStep(3);
+                }
+            );
+        console.log("Email: ", adminEmail);
+
+        const userEmail = await emailjs
+            .send(
+                "service_0kops2r",
+                "template_2wpdirt",
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_KEY
+            )
+            .then(
+                function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    setFormStep(2);
+                },
+                function (error) {
+                    console.log("FAILED...", error);
+                    setFormStep(3);
+                }
+            );
+        console.log("Email: ", userEmail);
+    };
     return (
         <Section>
             <Container
@@ -30,26 +118,42 @@ const Index: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
                     </SubText>
                 </HeaderContainer>
 
-                <FormContainer
-                    action="https://elielrom.us2.list-manage.com/subscribe/post"
-                    method="POST"
-                    noValidate
-                >
+                <FormContainer onSubmit={handleSubmit(formSubmitHandler)}>
                     <FormRow>
                         <FormLabel>Sign-up for updates</FormLabel>
-                        <input
-                            type="hidden"
-                            name="u"
-                            value="0f75b3711d3dfb5f9699d8e6b"
-                        />
-                        <input type="hidden" name="id" value="afca93fc51" />
                         <FormRowItem>
                             <EmailField
                                 type="email"
                                 placeholder="email@provider.com"
+                                defaultValue=""
+                                {...register("email")}
                             />
-                            <SubmitButton type="submit" value="Sign-up" />
+                            {formStep === 0 && (
+                                <SubmitButton type="submit" value="Sign-up" />
+                            )}
+                            {formStep === 1 && (
+                                <SubmitButton
+                                    type="submit"
+                                    value="Loading..."
+                                />
+                            )}
+                            {formStep === 2 && (
+                                <SubmitButton type="submit" value="Complete" />
+                            )}
                         </FormRowItem>
+                    </FormRow>
+                    <ValidationError>
+                        {errors.email && errors.email.message}
+                    </ValidationError>
+
+                    <FormRow>
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={
+                                process.env
+                                    .NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
+                            }
+                        />
                     </FormRow>
                 </FormContainer>
 
